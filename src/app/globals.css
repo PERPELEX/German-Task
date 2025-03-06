@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -77,4 +79,39 @@ html {
 
 .product-card:hover {
   transform: translateY(-5px) rotateX(5deg);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dancing {
+  font-family: "Dancing Script", cursive;
+}
+
+.heart-button {
+  font-size: 1.5rem;
+  color: #ccc;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.heart-button.filled {
+  color: red;
+}
+
+.heart-button:hover {
+  color: red;
 }

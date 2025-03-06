@@ -15,7 +15,7 @@ const ProductGrid = () => {
         return (
           <div
             key={productId}
-            className="product-card glass-card rounded-2xl overflow-hidden"
+            className="product-card bg-white rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 hover:scale-105"
           >
             <div className="relative">
               {product.imageUrl && (
@@ -28,8 +28,10 @@ const ProductGrid = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
-              <p className="text-gray-300 mb-4">{product.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-black">
+                {product.name}
+              </h3>
+              <p className="text-gray-700 mb-4">{product.description}</p>
               <div className="flex justify-between items-center">
                 <span className="text-2xl font-bold text-emerald-400">
                   €{product.price}
@@ -39,7 +41,7 @@ const ProductGrid = () => {
                     console.log("Adding item:", productId);
                     addToCart(productId);
                   }}
-                  className="flex items-center space-x-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 px-4 py-2 rounded-full transition-all duration-300"
+                  className="flex items-center space-x-2 bg-emerald-500 text-white px-4 py-2 rounded-full hover:bg-emerald-600 transition-all duration-300"
                 >
                   <ShoppingCart className="h-5 w-5" />
                   <span>{t("add_to_cart")}</span>

@@ -3,6 +3,7 @@ import "../../globals.css"; // Global styles
 import "../../slider.css";
 import Sidebar from "../../../components/admin/Sidebar";
 import Header from "../../../components/admin/Header";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default function DashboardLayout({ children }) {
   return (

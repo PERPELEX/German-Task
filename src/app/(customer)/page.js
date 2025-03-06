@@ -125,6 +125,18 @@ export default function HomePage() {
     ],
   };
 
+  const handleShopButtonClick = () => {
+    router.push("/shop");
+  };
+
+  const handleProductClick = () => {
+    router.push("/shop");
+  };
+
+  const handleAboutButtonClick = () => {
+    router.push("/about");
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -142,7 +154,10 @@ export default function HomePage() {
             Entdecken Sie die Vielfalt an frischem Obst, knackigem Gemüse und
             erlesenen Weinen – direkt am legendären Wiener Naschmarkt!
           </p>
-          <button className="mt-6 bg-[#D3183D] text-white px-12 py-3 rounded-full font-semibold hover:bg-red-600 transition">
+          <button
+            className="mt-6 bg-[#D3183D] text-white px-12 py-3 rounded-full font-semibold hover:bg-red-600 transition"
+            onClick={handleShopButtonClick}
+          >
             JETZT BESTELLEN
           </button>
         </div>
@@ -177,7 +192,10 @@ export default function HomePage() {
             Sortiment wider. Wir setzen auf regionale Bauern, nachhaltigen Anbau
             und absolute Frische <br />– Tag für Tag.
           </p>
-          <button className="bg-black text-white px-8 py-2 rounded-full hover:bg-gray-800 transition">
+          <button
+            className="bg-black text-white px-8 py-2 rounded-full hover:bg-gray-800 transition"
+            onClick={handleAboutButtonClick}
+          >
             MEHR ERFAHREN
           </button>
         </div>
@@ -199,16 +217,16 @@ export default function HomePage() {
         <div className="max-w-[80%] mx-auto">
           <Slider {...settings}>
             {products.map((product) => (
-              <div key={product.id} className="p-12">
-                <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center transition-all ease-in-out duration-200 hover:scale-105">
-                  <div className="relative w-40 h-40">
-                    <Image
-                      src={product.imageUrl}
-                      alt={product.name}
-                      layout="fill"
-                      objectFit="contain"
-                    />
-                  </div>
+              <div
+                key={product.id}
+                className="p-12"
+                onClick={handleProductClick}
+              >
+                <div className="bg-white rounded-2xl shadow-lg pb-6 flex flex-col items-center transition-all ease-in-out duration-200 hover:scale-105">
+                  <div
+                    className="relative w-full h-48 bg-cover bg-center rounded-t-2xl"
+                    style={{ backgroundImage: `url(${product.imageUrl})` }}
+                  ></div>
                   <h3 className="font-extrabold text-base mt-4 text-black">
                     {product.name}
                   </h3>
@@ -225,7 +243,10 @@ export default function HomePage() {
         </div>
 
         {/* Shop Button */}
-        <button className="mt-8 bg-[#D3183D] text-white px-12 py-2 rounded-full font-bold hover:bg-red-700 transition">
+        <button
+          className="mt-8 bg-[#D3183D] text-white px-12 py-2 rounded-full font-bold hover:bg-red-700 transition"
+          onClick={handleShopButtonClick}
+        >
           ZUM SHOP
         </button>
       </div>

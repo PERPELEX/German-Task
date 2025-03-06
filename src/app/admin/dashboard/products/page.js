@@ -1,7 +1,9 @@
+// filepath: /c:/Users/HP/Desktop/Task/mishex-next.js (2)/mishex-next.js/src/app/admin/dashboard/products/page.js
 "use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import "@fortawesome/fontawesome-free/css/all.min.css"; // Import Font Awesome CSS
 
 export default function ProductListing() {
   const router = useRouter();
@@ -42,6 +44,28 @@ export default function ProductListing() {
     }
   };
 
+  const handleBestsellerToggle = async (productId, isBestseller) => {
+    const token = localStorage.getItem("adminToken");
+    try {
+      const res = await fetch(`/api/products/${productId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token ? `Bearer ${token}` : "",
+        },
+        body: JSON.stringify({ bestseller: !isBestseller }),
+      });
+      if (!res.ok) throw new Error("Failed to update product");
+      setProducts((prev) =>
+        prev.map((p) =>
+          p._id === productId ? { ...p, bestseller: !isBestseller } : p
+        )
+      );
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
   if (loading) return <p>Loading products...</p>;
   if (error) return <p>Error: {error}</p>;
 
@@ -67,10 +91,22 @@ export default function ProductListing() {
                   className="mt-2 h-40 object-cover rounded"
                 />
               )}
-              <div className="mt-auto">
+              <div className="mt-8 flex justify-between items-center ">
+                <button
+                  onClick={() =>
+                    handleBestsellerToggle(product._id, product.bestseller)
+                  }
+                  className={`heart-button ${
+                    product.bestseller ? "filled" : ""
+                  }`}
+                >
+                  <i
+                    className={`fa${product.bestseller ? "s" : "r"} fa-heart`}
+                  ></i>
+                </button>
                 <button
                   onClick={() => handleDelete(product._id)}
-                  className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
                 >
                   Delete Product
                 </button>

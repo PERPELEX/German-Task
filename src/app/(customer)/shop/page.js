@@ -24,8 +24,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 bg-cover bg-center transform hover:scale-105 transition-transform duration-700"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1600')",
+            backgroundImage: "url('/Foto 10.jpg')",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent">
@@ -40,18 +39,18 @@ export default function HomePage() {
                 Entdecken Sie die Vielfalt unserer frischen Produkte
               </p>
               <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <button
-                  onClick={() => router.push("/gemuese")}
-                  className="bg-emerald-500 text-white px-4 md:px-8 py-2 md:py-4 rounded-full hover:bg-emerald-600 transition-all duration-300"
+                <a
+                  href="#gemüse"
+                  className="bg-[#D3183D] text-white text-lg font-medium px-4 md:px-8 py-2 md:py-4 rounded-full hover:bg-red-600 transition-all duration-300"
                 >
                   Gemüse entdecken
-                </button>
-                <button
-                  onClick={() => router.push("/weinepage")}
-                  className="bg-white/10 backdrop-blur-sm text-white px-4 md:px-8 py-2 md:py-4 rounded-full hover:bg-white/20 transition-all duration-300"
+                </a>
+                <a
+                  href="#weine"
+                  className="bg-white/10 backdrop-blur-sm text-white text-lg font-medium px-4 md:px-8 py-2 md:py-4 rounded-full hover:bg-white/20 transition-all duration-300"
                 >
                   Weine entdecken
-                </button>
+                </a>
               </div>
             </div>
           </div>

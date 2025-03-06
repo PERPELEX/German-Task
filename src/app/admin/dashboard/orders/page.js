@@ -75,8 +75,7 @@ export default function OrdersPage() {
                     })}
                   </p>
                   <p className="mt-2">
-                    <strong>Subtotal:</strong> €
-                    {Number(order.subtotal).toFixed(2)}
+                    <strong>Subtotal:</strong> €{Number(order.total).toFixed(2)}
                   </p>
                 </div>
                 <select
@@ -116,12 +115,22 @@ export default function OrdersPage() {
                 <h4 className="font-semibold mb-2">Ordered Products</h4>
                 {order.items.map((item) => (
                   <div
-                    key={item.id}
-                    className="flex justify-between text-gray-300"
+                    key={item.productId}
+                    className="flex justify-between items-center text-gray-300 mb-2"
                   >
-                    <span>
-                      {item.quantity}x {item.name}
-                    </span>
+                    <div className="flex items-center">
+                      {console.log(
+                        "immmmmmmmmmaaaaaaaaaggggggeeee " + item.imageUrl
+                      )}
+                      <img
+                        src={item.Url}
+                        alt={item.name}
+                        className="w-16 h-16 object-cover rounded-lg mr-4"
+                      />
+                      <span>
+                        {item.quantity}x {item.name}
+                      </span>
+                    </div>
                     <span>€{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}

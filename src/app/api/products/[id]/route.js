@@ -54,3 +54,30 @@ export async function DELETE(req, { params }) {
     });
   }
 }
+
+export async function PATCH(req, { params }) {
+  try {
+    await connectToDatabase();
+    // Optionally, add authentication for admin-only actions
+    const { id } = await params;
+    const { bestseller } = await req.json();
+
+    const updatedProduct = await Product.findByIdAndUpdate(
+      id,
+      { bestseller },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedProduct) {
+      return new Response(JSON.stringify({ error: "Product not found" }), {
+        status: 404,
+      });
+    }
+
+    return new Response(JSON.stringify(updatedProduct), { status: 200 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500,
+    });
+  }
+}

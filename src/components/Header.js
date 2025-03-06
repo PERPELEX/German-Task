@@ -6,10 +6,12 @@ import { useRouter } from "next/navigation";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { useState, useContext } from "react";
 import { ShopContext } from "../app/context/shopContext";
+import Cart from "./cart/Cart";
 
 export default function Header() {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const { getCartCount } = useContext(ShopContext);
   const cartCount = getCartCount();
 
@@ -19,6 +21,7 @@ export default function Header() {
     { name: "MENÜ", href: "/menu" },
     { name: "JETZT KONTAKTIEREN!", href: "/contact" },
     { name: "SHOP", href: "/shop" },
+    { name: "LOGIN", href: "/login" },
   ];
 
   return (
@@ -53,7 +56,7 @@ export default function Header() {
           ))}
           {/* Shopping Cart Icon */}
           <button
-            onClick={() => router.push("/cart")}
+            onClick={() => setIsCartOpen(true)}
             className="relative p-2 hover:bg-white/10 rounded-full transition-colors"
           >
             <ShoppingCart className="w-6 h-6" />
@@ -79,7 +82,7 @@ export default function Header() {
         <div className="md:hidden fixed inset-0 z-40 bg-gray-800 bg-opacity-95 flex flex-col items-center justify-center">
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="absolute top-4 right-4 text-white"
+            className="absolute top-4 right-4 text-white "
           >
             <X className="h-8 w-8" />
           </button>
@@ -97,6 +100,9 @@ export default function Header() {
           </nav>
         </div>
       )}
+
+      {/* Cart Sidebar */}
+      <Cart isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
     </header>
   );
 }

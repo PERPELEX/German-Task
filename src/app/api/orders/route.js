@@ -21,8 +21,19 @@ export async function POST(req) {
   try {
     await connectToDatabase();
     const data = await req.json();
+
+    console.log("Received Data:", JSON.stringify(data, null, 2)); // Debugging
+
+    // Check if imageUrl exists in all items
+    data.items.forEach((item) => {
+      if (!item.imageUrl) {
+        console.warn(`Missing imageUrl for item: ${item.name}`);
+      }
+    });
+
     const order = new Order(data);
     await order.save();
+
     return new Response(JSON.stringify(order), { status: 201 });
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), {
