@@ -1,4 +1,3 @@
-// /src/hooks/useProducts.js
 import { useContext } from "react";
 import { ShopContext } from "../app/context/shopContext";
 
@@ -28,9 +27,15 @@ export const useProducts = () => {
     return Array.from(new Set(subcats));
   };
 
+  const getBestsellerProducts = () => {
+    const filtered = products.filter((product) => product.bestseller);
+    return filtered.map(translateProduct);
+  };
+
   // If needed, add additional helper functions (e.g. searchProducts)
   return {
     getProductsByCategory,
     getUniqueSubcategories,
+    getBestsellerProducts, // Add this line
   };
 };

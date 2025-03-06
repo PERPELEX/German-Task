@@ -3,12 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ShoppingCart, Menu, User, Leaf, X } from "lucide-react";
-import { useState } from "react";
+import { ShoppingCart, Menu, X } from "lucide-react";
+import { useState, useContext } from "react";
+import { ShopContext } from "../app/context/shopContext";
 
 export default function Header() {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { getCartCount } = useContext(ShopContext);
+  const cartCount = getCartCount();
 
   const navItems = [
     { name: "HOME", href: "/" },
@@ -25,7 +28,7 @@ export default function Header() {
         <div className="logo">
           <Link href="/">
             <Image
-              src="/logo.jpg"
+              src="/logo.png"
               alt="Alex am Naschmarkt"
               width={120}
               height={60}
@@ -49,9 +52,17 @@ export default function Header() {
             </Link>
           ))}
           {/* Shopping Cart Icon */}
-          <Link href="/cart">
+          <button
+            onClick={() => router.push("/cart")}
+            className="relative p-2 hover:bg-white/10 rounded-full transition-colors"
+          >
             <ShoppingCart className="w-6 h-6" />
-          </Link>
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-emerald-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </button>
         </nav>
 
         {/* Mobile Menu Button */}

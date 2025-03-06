@@ -1,109 +1,132 @@
 "use client";
 
-import React, { useState } from "react";
-import { Leaf } from "lucide-react";
+import Image from "next/image";
+import React from "react";
 
-const Footer = () => {
-  const [showCookieConsent, setShowCookieConsent] = useState(true);
-
+const InfoSection = () => {
   return (
-    <>
-      <footer className="glass-card mt-20 py-8">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Leaf className="h-6 w-6 text-[#00ff88]" />
-                <span className="text-xl font-bold gradient-text">
-                  Alex am Naschmarkt
-                </span>
-              </div>
-              <p className="text-gray-400">
-                Ihr Markt für frische Produkte und erlesene Weine
-              </p>
-            </div>
+    <div className="flex flex-col md:flex-row h-[200vh] bg-[#2a2a2a] text-white">
+      {/* Left Side - Image */}
+      <div className="flex-[5] relative">
+        <Image
+          src="/footerBg.jpg" // Replace with your image path
+          alt="Fruits"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-none"
+          priority
+        />
+      </div>
 
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Rechtliches</h3>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="/impressum"
-                    className="text-gray-400 hover:text-white"
-                  >
-                    Impressum
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/datenschutz"
-                    className="text-gray-400 hover:text-white"
-                  >
-                    Datenschutzerklärung
-                  </a>
-                </li>
-                <li>
-                  <a href="/agb" className="text-gray-400 hover:text-white">
-                    AGB
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Kontakt</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>Naschmarkt 1</li>
-                <li>1060 Wien</li>
-                <li>Tel: +43 1 234 567</li>
-                <li>Email: info@alexamnaschmarkt.at</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Öffnungszeiten</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>Mo-Fr: 08:00 - 18:30</li>
-                <li>Sa: 08:00 - 17:00</li>
-                <li>So: geschlossen</li>
-              </ul>
-            </div>
+      {/* Right Side - Content */}
+      <div className="flex flex-[3] flex-row justify-center">
+        <div className="flex flex-col justify-center px-6 md:px-12 py-8">
+          <div className="mb-6">
+            <h2 className="text-lg font-bold mb-2">
+              Allgemeine Geschäftsbedingungen
+            </h2>
+            <ol className="font-thin list-decimal list-inside text-sm">
+              <li className="mb-4">
+                <strong>Geltungsbereich:</strong> Diese Allgemeinen
+                Geschäftsbedingungen gelten für alle Geschäftsbeziehungen
+                zwischen uns und unseren Kunden. Maßgeblich ist jeweils die zum
+                Zeitpunkt des Vertragsschlusses gültige Fassung.
+              </li>
+              <li className="mb-4">
+                <strong>Vertragsschluss:</strong> Die Präsentation der Waren in
+                unserem Online-Shop stellt kein bindendes Angebot dar. Erst die
+                Bestellung einer Ware durch Sie ist ein bindendes Angebot nach §
+                145 BGB. Im Falle der Annahme dieses Angebotes versenden wir an
+                Sie eine Auftragsbestätigung per E-Mail innerhalb von zwei
+                Werktagen.
+              </li>
+              <li className="mb-4">
+                <strong>Preise und Zahlungsbedingungen:</strong> Alle Preise
+                verstehen sich in Euro inklusive der gesetzlichen
+                Mehrwertsteuer. Die Zahlung erfolgt per Vorauskasse, Kreditkarte
+                oder Rechnung.
+              </li>
+              <li className="mb-4">
+                <strong>Lieferung:</strong> Die Lieferung erfolgt innerhalb
+                Wiens. Die Lieferzeit beträgt in der Regel 1-2 Werktage. Wir
+                behalten uns vor, eine Teillieferung vorzunehmen, sofern dies
+                für Sie zumutbar ist.
+              </li>
+            </ol>
           </div>
 
-          <div className="border-t border-gray-700 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Alex am Naschmarkt. Alle Rechte vorbehalten.</p>
+          <div className="mb-6">
+            <h2 className=" font-bold mb-2">Datenschutzerklärung</h2>
+            <ol className="font-thin list-decimal list-inside text-sm">
+              <li className="mb-4">
+                <strong>Datenschutz auf einen Blick:</strong> Allgemeine
+                Hinweise Die folgenden Hinweise geben einen einfachen Überblick
+                darüber, was mit Ihren personenbezogenen Daten passiert, wenn
+                Sie diese Website besuchen. Personenbezogene Daten sind alle
+                Daten, mit denen Sie persönlich identifiziert werden können.
+              </li>
+              <li className="mb-4">
+                <strong>Datenerfassung auf dieser Website:</strong> Wer ist
+                verantwortlich für die Datenerfassung auf dieser Website? Die
+                Datenverarbeitung auf dieser Website erfolgt durch den
+                Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum
+                dieser Website entnehmen. Wie erfassen wir Ihre Daten? Ihre
+                Daten werden zum einen dadurch erhoben, dass Sie uns diese
+                mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie
+                in ein Kontaktformular eingeben.
+              </li>
+              <li className="mb-4">
+                <strong>Allgemeine Hinweise und Pflichtinformationen:</strong>
+                Datenschutz Die Betreiber dieser Seiten nehmen den Schutz Ihrer
+                persönlichen Daten sehr ernst. Wir behandeln Ihre
+                personenbezogenen Daten vertraulich und entsprechend der
+                gesetzlichen Datenschutzvorschriften sowie dieser
+                Datenschutzerklärung.
+              </li>
+            </ol>
+          </div>
+
+          <div>
+            <h2 className=" font-bold mb-2">Impressum</h2>
+
+            <ul className="font-thin  list-inside text-sm">
+              <li className="mb-4">
+                <strong classname="mb-2 font-medium ">
+                  Angaben gemäß § 5 TMG
+                </strong>
+                <p>Alex am Naschmarkt GmbH </p>
+                <p>Naschmarkt 1</p>
+                <p>1060 Wien</p>
+                <p>Österreich</p>
+              </li>
+              <li className="mb-4">
+                <strong classname="mb-2 font-bold ">Vertreten durch</strong>
+                <p>Alexander Mustermann</p>
+                <p>Geschäftsführer</p>
+              </li>
+              <li className="mb-4">
+                <strong classname="mb-2 font-bold ">Kontakt</strong>
+                <p>Telefon: +43 1 234 567</p>
+                <p>E-Mail: info@alexamnaschmarkt.at</p>
+              </li>
+              <li className="mb-4">
+                <strong classname="mb-2 font-bold ">Registereintrag</strong>
+                <p>Handelsregister: Handelsgericht Wien</p>
+                <p>Registernummer: FN 123456a</p>
+              </li>
+              <li className="mb-4">
+                <strong classname="mb-2 font-bold ">Umsatzsteuer-ID</strong>
+                <p>
+                  Umsatzsteuer-Identifikationsnummer gemäß §27 a
+                  Umsatzsteuergesetz: ATU12345678
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
-      </footer>
-
-      {/* Cookie Consent Banner */}
-      {showCookieConsent && (
-        <div className="fixed bottom-0 left-0 right-0 bg-gray-900 p-4 z-50">
-          <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
-            <p className="text-gray-300 mb-4 md:mb-0">
-              Wir verwenden Cookies, um Ihnen das beste Einkaufserlebnis zu
-              bieten. Durch die weitere Nutzung der Website stimmen Sie der
-              Verwendung von Cookies zu.
-            </p>
-            <div className="flex space-x-4">
-              <button
-                onClick={() => setShowCookieConsent(false)}
-                className="bg-gradient-to-r from-[#00ff88] to-[#00a3ff] text-white px-6 py-2 rounded-full"
-              >
-                Akzeptieren
-              </button>
-              <button
-                onClick={() => setShowCookieConsent(false)}
-                className="glass-card px-6 py-2 rounded-full"
-              >
-                Ablehnen
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 };
 
-export default Footer;
+export default InfoSection;

@@ -8,6 +8,7 @@ const ProductSchema = new mongoose.Schema(
     imageUrl: String,
     category: { type: String, required: true },
     subcategory: { type: String, required: true },
+    bestseller: { type: Boolean, default: false }, // Add bestseller field
   },
   { timestamps: true }
 );

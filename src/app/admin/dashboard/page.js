@@ -1,5 +1,6 @@
 // /app/admin/dashboard/layout.jsx
 import "../../globals.css"; // Adjust path as needed
+import "../../slider.css"; // Adjust path as needed
 import Sidebar from "../../../components/admin/Sidebar";
 import Header from "../../../components/admin/Header";
 

@@ -2,23 +2,20 @@
 
 import React, { useState } from "react";
 import { z } from "zod";
-import { isValidPhoneNumber } from "libphonenumber-js";
-import { Mail, Phone, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name muss mindestens 2 Zeichen lang sein"),
+  nachname: z.string().min(2, "Nachname muss mindestens 2 Zeichen lang sein"),
   email: z.string().email("Ungültige E-Mail-Adresse"),
-  phone: z.string().refine((val) => isValidPhoneNumber(val, "AT"), {
-    message: "Ungültige Telefonnummer",
-  }),
   message: z.string().min(10, "Nachricht muss mindestens 10 Zeichen lang sein"),
 });
 
 const ContactForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     name: "",
+    nachname: "",
     email: "",
-    phone: "",
     message: "",
   });
 
@@ -53,7 +50,7 @@ const ContactForm = ({ onSuccess }) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setSubmitStatus("success");
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", nachname: "", email: "", message: "" });
       if (onSuccess) {
         setTimeout(onSuccess, 1500);
       }
@@ -75,7 +72,10 @@ const ContactForm = ({ onSuccess }) => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-2">
+        <label
+          htmlFor="name"
+          className="block text-lg text-black font-normal ml-4 "
+        >
           Name
         </label>
         <input
@@ -84,7 +84,7 @@ const ContactForm = ({ onSuccess }) => {
           name="name"
           value={formData.name}
           onChange={handleInputChange}
-          className={`w-full px-4 py-2 rounded-lg bg-white/10 focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 rounded-full bg-white text-black focus:outline-none focus:ring-2 ${
             errors.name ? "ring-2 ring-red-500" : "focus:ring-emerald-500"
           }`}
         />
@@ -94,18 +94,42 @@ const ContactForm = ({ onSuccess }) => {
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-2">
+        <label
+          htmlFor="nachname"
+          className="block text-lg text-black font-normal ml-4"
+        >
+          Nachname
+        </label>
+        <input
+          type="text"
+          id="nachname"
+          name="nachname"
+          value={formData.nachname}
+          onChange={handleInputChange}
+          className={`w-full px-4 py-2 rounded-full bg-white text-black focus:outline-none focus:ring-2 ${
+            errors.nachname ? "ring-2 ring-red-500" : "focus:ring-emerald-500"
+          }`}
+        />
+        {errors.nachname && (
+          <p className="mt-1 text-sm text-red-500">{errors.nachname}</p>
+        )}
+      </div>
+
+      <div>
+        <label
+          htmlFor="email"
+          className="block text-lg text-black font-normal ml-4"
+        >
           E-Mail
         </label>
         <div className="relative">
-          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
           <input
             type="email"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full pl-10 pr-4 py-2 rounded-lg bg-white/10 focus:outline-none focus:ring-2 ${
+            className={`w-full pl-10 pr-4 py-2 rounded-full bg-white text-black focus:outline-none focus:ring-2 ${
               errors.email ? "ring-2 ring-red-500" : "focus:ring-emerald-500"
             }`}
           />
@@ -116,30 +140,10 @@ const ContactForm = ({ onSuccess }) => {
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium mb-2">
-          Telefon
-        </label>
-        <div className="relative">
-          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleInputChange}
-            placeholder="+43 "
-            className={`w-full pl-10 pr-4 py-2 rounded-lg bg-white/10 focus:outline-none focus:ring-2 ${
-              errors.phone ? "ring-2 ring-red-500" : "focus:ring-emerald-500"
-            }`}
-          />
-        </div>
-        {errors.phone && (
-          <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
+        <label
+          htmlFor="message"
+          className="block text-lg text-black font-normal ml-4"
+        >
           Nachricht
         </label>
         <textarea
@@ -148,7 +152,7 @@ const ContactForm = ({ onSuccess }) => {
           value={formData.message}
           onChange={handleInputChange}
           rows={4}
-          className={`w-full px-4 py-2 rounded-lg bg-white/10 focus:outline-none focus:ring-2 ${
+          className={`w-full px-4 py-2 rounded-3xl bg-white text-black focus:outline-none focus:ring-2 ${
             errors.message ? "ring-2 ring-red-500" : "focus:ring-emerald-500"
           }`}
         />
@@ -160,14 +164,13 @@ const ContactForm = ({ onSuccess }) => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full flex items-center justify-center space-x-2 bg-emerald-500 text-white px-6 py-3 rounded-lg hover:bg-emerald-600 transition-colors disabled:opacity-50"
+        className="w-[70%] mx-auto flex items-center justify-center space-x-2 bg-black text-white px-6 py-3 rounded-full hover:bg-gray-600 transition-colors disabled:opacity-50"
       >
         {isSubmitting ? (
           <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
         ) : (
           <>
-            <Send className="h-5 w-5" />
-            <span>Nachricht senden</span>
+            <span>JETZT KONTAKTIEREN!</span>
           </>
         )}
       </button>

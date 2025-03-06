@@ -6,6 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import Footer from "@/components/Footer";
 
 import "../globals.css";
+import "../slider.css";
 import ShopProvider from "../context/shopContext";
 import Header from "@/components/Header";
 import { AuthProvider } from "../context/AuthContext";
