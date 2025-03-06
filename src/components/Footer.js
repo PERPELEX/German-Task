@@ -2,8 +2,15 @@
 
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const InfoSection = () => {
+  const router = useRouter();
+
+  const handleImpressumClick = () => {
+    router.push("/");
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-[200vh] bg-[#2a2a2a] text-white">
       {/* Left Side - Image */}
@@ -87,11 +94,17 @@ const InfoSection = () => {
           </div>
 
           <div>
-            <h2 className=" font-bold mb-2">Impressum</h2>
+            <h2
+              className=" font-bold mb-2"
+              onClick={handleImpressumClick}
+              style={{ cursor: "pointer" }}
+            >
+              Impressum
+            </h2>
 
             <ul className="font-thin  list-inside text-sm">
               <li className="mb-4">
-                <strong classname="mb-2 font-medium ">
+                <strong className="mb-2 font-medium ">
                   Angaben gemäß § 5 TMG
                 </strong>
                 <p>Alex am Naschmarkt GmbH </p>
@@ -100,22 +113,22 @@ const InfoSection = () => {
                 <p>Österreich</p>
               </li>
               <li className="mb-4">
-                <strong classname="mb-2 font-bold ">Vertreten durch</strong>
+                <strong className="mb-2 font-bold ">Vertreten durch</strong>
                 <p>Alexander Mustermann</p>
                 <p>Geschäftsführer</p>
               </li>
               <li className="mb-4">
-                <strong classname="mb-2 font-bold ">Kontakt</strong>
+                <strong className="mb-2 font-bold ">Kontakt</strong>
                 <p>Telefon: +43 1 234 567</p>
                 <p>E-Mail: info@alexamnaschmarkt.at</p>
               </li>
               <li className="mb-4">
-                <strong classname="mb-2 font-bold ">Registereintrag</strong>
+                <strong className="mb-2 font-bold ">Registereintrag</strong>
                 <p>Handelsregister: Handelsgericht Wien</p>
                 <p>Registernummer: FN 123456a</p>
               </li>
               <li className="mb-4">
-                <strong classname="mb-2 font-bold ">Umsatzsteuer-ID</strong>
+                <strong className="mb-2 font-bold ">Umsatzsteuer-ID</strong>
                 <p>
                   Umsatzsteuer-Identifikationsnummer gemäß §27 a
                   Umsatzsteuergesetz: ATU12345678
