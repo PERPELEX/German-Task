@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu, X, User } from "lucide-react";
 import { useState, useContext } from "react";
 import { ShopContext } from "../app/context/shopContext";
+import { useAuth } from "@/app/context/AuthContext";
 import Cart from "./cart/Cart";
 
 export default function Header() {
@@ -13,6 +14,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { getCartCount } = useContext(ShopContext);
+  const { isLoggedIn } = useAuth();
   const cartCount = getCartCount();
 
   const navItems = [
@@ -21,7 +23,6 @@ export default function Header() {
     { name: "MENÜ", href: "/menu" },
     { name: "JETZT KONTAKTIEREN!", href: "/contact" },
     { name: "SHOP", href: "/shop" },
-    { name: "LOGIN", href: "/login" },
   ];
 
   return (
@@ -54,6 +55,22 @@ export default function Header() {
               </span>
             </Link>
           ))}
+          {/* User Avatar or Login Link */}
+          {isLoggedIn ? (
+            <Link href="/user">
+              <User className="w-6 h-6 hover:text-gray-400 transition" />
+            </Link>
+          ) : (
+            <Link href="/login">
+              <span
+                className={`hover:text-gray-400 transition ${
+                  router.pathname === "/login" ? "text-gray-400" : ""
+                }`}
+              >
+                LOGIN
+              </span>
+            </Link>
+          )}
           {/* Shopping Cart Icon */}
           <button
             onClick={() => setIsCartOpen(true)}
@@ -97,6 +114,18 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+            {/* User Avatar or Login Link */}
+            {isLoggedIn ? (
+              <Link href="/user" onClick={() => setIsMobileMenuOpen(false)}>
+                <User className="w-8 h-8 text-white hover:text-emerald-400 transition" />
+              </Link>
+            ) : (
+              <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                <span className="text-2xl text-white hover:text-emerald-400 transition">
+                  LOGIN
+                </span>
+              </Link>
+            )}
           </nav>
         </div>
       )}

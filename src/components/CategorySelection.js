@@ -18,7 +18,7 @@ const CategorySection = ({ category, title }) => {
       case "weine":
         return <Wine className="h-8 w-8 text-[#00a3ff]" />;
       case "obst":
-        return <Apple className="h-8 w-8 text-[#00ff88]" />;
+        return <Apple className="h-8 w-8 text-[#29aa45]" />;
       default:
         return null;
     }
@@ -41,7 +41,7 @@ const CategorySection = ({ category, title }) => {
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-8 md:mb-16">
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
-            <div className="bg-white rounded-full shadow-2xl p-2">
+            <div className="bg-white rounded-full shadow-3xl p-2">
               {getCategoryIcon()}
             </div>
             <h2 className="text-2xl md:text-4xl font-bold text-black">

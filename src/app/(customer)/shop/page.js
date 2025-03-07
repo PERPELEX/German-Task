@@ -57,9 +57,10 @@ export default function HomePage() {
         </div>
       </div>
       {/* Gemüse Section */}
-      <CategorySection category="gemüse" title="categories.vegetables" />
+      <CategorySection category="gemüse" title="Frisches Gemüse" />
+      <CategorySection category="obst" title="Saftiges Obst" />
       {/* Weine Section */}
-      <CategorySection category="weine" title="categories.wines" />
+      <CategorySection category="weine" title="Weine & Co." />
       <ThemeToggle />
     </>
   );

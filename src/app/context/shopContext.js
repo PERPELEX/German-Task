@@ -82,7 +82,7 @@ const ShopProvider = ({ children }) => {
         totalAmount += Number(product.price) * cartItems[id];
       }
     }
-    return totalAmount;
+    return totalAmount * 1.2;
   };
 
   // Add clearCart function

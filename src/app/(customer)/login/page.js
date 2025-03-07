@@ -6,7 +6,7 @@ import { useAuth } from "@/app/context/AuthContext";
 
 export default function AuthPage() {
   const router = useRouter();
-  const { setIsLoggedIn } = useAuth();
+  const { setIsLoggedIn, setUserEmail } = useAuth();
   const [mode, setMode] = useState("login"); // "login", "signup", or "reset"
   const [name, setName] = useState(""); // Only used in signup mode
   const [email, setEmail] = useState("");
@@ -43,14 +43,16 @@ export default function AuthPage() {
     if (res.ok) {
       if (mode === "signup") {
         setMode("login");
-        setError("Signup successful! Please log in.");
+        setMessage("Signup successful! Please log in.");
         setName("");
         setEmail("");
         setPassword("");
       } else if (mode === "login") {
         localStorage.setItem("customerToken", data.token);
+        localStorage.setItem("customerEmail", email);
         setIsLoggedIn(true);
-        router.push("/");
+        setUserEmail(email);
+        router.push("/user");
       } else if (mode === "reset") {
         setMessage("Password reset link sent to your email.");
         setEmail("");
