@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# German Grocery Store E-commerce Application
 
-## Getting Started
+A German grocery store e-commerce application built for a client with the following features:
 
-First, run the development server:
+## Features
+
+- **Authentication**
+- **Shop**
+- **Menu Downloader**
+- **Contact Form**
+- **Cart**
+- **Admin Dashboard**
+- **Favorite Products**
+- **Reset Password**
+- **MongoDB Integration**
+- **Password Hashing**
+
+## Known Issues
+
+The application currently suffers from a **hydration error** due to inexperience in backend development. As a result, it cannot be deployed at the moment. However, work is in progress to resolve the issue and deploy the application soon.
+
+## How to Start
 
 ```bash
+
+npm i
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Homepage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Homepage Screenshot](./assets/home.png "Homepage")
 
-## Learn More
+### About
 
-To learn more about Next.js, take a look at the following resources:
+![About Screenshot](./assets/about.png "About")
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Menu
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Menu Screenshot](./assets/menu.png "Menu")
 
-## Deploy on Vercel
+### Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Contact Screenshot](./assets/contact.png "Contact")
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Shop
+
+![Shop Screenshot](./assets/shop.png "Shop")
+
+### Login
+
+![Login Screenshot](./assets/login.png "Login")
+
+### Cart
+
+![Cart Screenshot](./assets/cart.png "Cart")
+
+### Place Order
+
+![Place Order Screenshot](./assets/placeOrder.png "Place Order")
+
+### Add Product
+
+![Add Product Screenshot](./assets/addProd.png "Add Product")
+
+### Products
+
+![Products Screenshot](./assets/products.png "Products")
+
+### Orders
+
+![Orders Screenshot](./assets/orders.png "Orders")
